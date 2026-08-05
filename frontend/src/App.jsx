@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { Search, MapPin } from 'lucide-react';
+import { Search, MapPin, Map } from 'lucide-react';
 
 function App() {
   const [query, setQuery] = useState('');
@@ -28,44 +28,60 @@ function App() {
   };
 
   return (
-    <div style={{ maxWidth: '600px', margin: '40px auto', padding: '20px', fontFamily: 'system-ui, sans-serif' }}>
-      <h1 style={{ textAlign: 'center', color: '#1a1a1a' }}>📍 Bangalore Pincode Explorer</h1>
-      <p style={{ textAlign: 'center', color: '#666', marginBottom: '30px' }}>
-        Search by area name (e.g., Indiranagar) or 6-digit Pincode
-      </p>
+    <div className="min-h-screen flex justify-center items-start pt-20 bg-slate-900 font-sans px-4">
+      <div className="w-full max-w-2xl p-10 bg-slate-800 rounded-2xl shadow-2xl border border-slate-700">
+        
+        <div className="text-center mb-8">
+          <h1 className="text-slate-50 mb-3 text-3xl flex items-center justify-center gap-3 font-bold">
+            <Map className="text-sky-400" size={36} />
+            Pincode Explorer
+          </h1>
+          <p className="text-slate-400 text-base">
+            Search Bangalore areas or 6-digit postal codes
+          </p>
+        </div>
 
-      <form onSubmit={handleSearch} style={{ display: 'flex', gap: '10px', marginBottom: '30px' }}>
-        <input
-          type="text"
-          placeholder="Enter pincode or area name..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)} 
-          style={{ flex: 1, padding: '14px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '16px', outline: 'none' }}
-        />
-        <button 
-          type="submit" 
-          disabled={loading}
-          style={{ padding: '0 24px', backgroundColor: '#3b82f6', color: 'white', border: 'none', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-        >
-          {loading ? '...' : <Search size={20} />}
-        </button>
-      </form>
+        <form onSubmit={handleSearch} className="flex gap-3 mb-8">
+          <input
+            type="text"
+            placeholder="e.g., Indiranagar or 560038"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)} 
+            className="flex-1 px-5 py-4 rounded-xl border border-slate-600 bg-slate-900 text-slate-50 text-base outline-none transition-colors focus:border-sky-400"
+          />
+          <button 
+            type="submit" 
+            disabled={loading}
+            className="px-7 bg-sky-400 text-slate-900 font-bold rounded-xl flex items-center justify-center transition-transform active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
+          >
+            {loading ? '...' : <Search size={22} />}
+          </button>
+        </form>
 
-      {error && <div style={{ color: '#ef4444', textAlign: 'center', padding: '10px', backgroundColor: '#fee2e2', borderRadius: '8px', marginBottom: '20px' }}>{error}</div>}
-
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-        {results.map((item, index) => (
-          <div key={index} style={{ padding: '16px', border: '1px solid #e2e8f0', borderRadius: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#f8fafc' }}>
-            <div>
-              <h3 style={{ margin: '0 0 6px 0', color: '#0f172a', fontSize: '18px' }}>{item.location}</h3>
-              <p style={{ margin: 0, color: '#64748b', fontSize: '14px' }}>{item.district}, {item.state}</p>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', backgroundColor: '#e2e8f0', padding: '6px 12px', borderRadius: '6px', fontWeight: '600', color: '#334155' }}>
-              <MapPin size={16} />
-              {item.pincode}
-            </div>
+        {error && (
+          <div className="text-red-300 text-center p-3.5 bg-red-500/10 border border-red-500/20 rounded-xl mb-6">
+            {error}
           </div>
-        ))}
+        )}
+
+        <div className="flex flex-col gap-4">
+          {results.map((item, index) => (
+            <div 
+              key={index} 
+              className="p-5 border border-slate-700 rounded-xl flex justify-between items-center bg-slate-900 transition-all hover:-translate-y-1 hover:border-slate-600"
+            >
+              <div>
+                <h3 className="mb-2 text-slate-50 text-xl font-semibold">{item.location}</h3>
+                <p className="m-0 text-slate-400 text-sm">{item.district}, {item.state}</p>
+              </div>
+              <div className="flex items-center gap-2 bg-sky-400/10 px-4 py-2 rounded-lg font-semibold text-sky-400 text-lg">
+                <MapPin size={20} />
+                {item.pincode}
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </div>
   );
