@@ -2,11 +2,11 @@
 
 A full-stack web application designed to quickly map Bangalore areas to their respective postal codes, and vice versa. Built under a strict 2-3 hour time constraint, this project demonstrates rapid full-stack development, database seeding, and modern UI implementation.
 
-**Live Demo:** [https://bangalore-pincode-1akq0k8cw-pranshu-pallavs-projects.vercel.app/]
-**Backend API:** [https://bangalore-pincode.onrender.com]/api/search?query=Indiranagar
+**Live Demo:** [bangalore-pincode-1akq0k8cw-pranshu-pallavs-projects.vercel.app](https://bangalore-pincode-1akq0k8cw-pranshu-pallavs-projects.vercel.app/)
+**Backend API:** [bangalore-pincode.onrender.com](https://bangalore-pincode.onrender.com)/api/search?query=Indiranagar
 
-![App Screenshot](<img width="1907" height="902" alt="image" src="https://github.com/user-attachments/assets/11ef8acf-63b9-41c2-b033-51622e59739b" />
-) (<img width="1916" height="897" alt="image" src="https://github.com/user-attachments/assets/1247d70c-8231-4530-a6fe-0f574dfca8b8" />)
+![App Screenshot](https://github.com/user-attachments/assets/11ef8acf-63b9-41c2-b033-51622e59739b)
+![App Screenshot](https://github.com/user-attachments/assets/1247d70c-8231-4530-a6fe-0f574dfca8b8)
 
 ---
 
