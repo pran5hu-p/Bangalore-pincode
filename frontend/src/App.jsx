@@ -17,7 +17,7 @@ function App() {
     setResults([]);
     
     try {
-      const res = await axios.get(`http://localhost:5000/api/search?query=${query}`);
+      const res = await axios.get(`https://bangalore-pincode.onrender.com/api/search?query=${query}`);
       setResults(res.data);
       if(res.data.length === 0) setError('No locations found for this query.');
     } catch (err) {
